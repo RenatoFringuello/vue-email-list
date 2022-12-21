@@ -3,7 +3,8 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            mail:null,
+            mails:[],
+            nMail: 10
         }
     },
     methods: {
@@ -13,7 +14,7 @@ createApp({
             axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then((response)=>{
                     //if successful
-                    this.mail = response.data.response;
+                    this.mails.push(response.data.response);
                 })
                 .catch((error)=>{
                     //if errors occurs
@@ -25,7 +26,8 @@ createApp({
         }
     },
     created() {
-        this.loadMail();
+        for(let i=0; i<this.nMail; i++)
+            this.loadMail();
     },
     
 
