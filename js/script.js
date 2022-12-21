@@ -32,7 +32,7 @@ createApp({
                 })
         }
     },
-    created() {
+    mounted() {
         for(let i=0; i<this.nMails; i++){
             this.loadMail();
         }
