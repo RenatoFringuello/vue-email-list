@@ -9,10 +9,10 @@
 <body >
 
     <div id="app">
-        <ul>
+        <ul v-if="loaded">
             <li v-for="mail in mails">{{ mail }}</li>
         </ul>
-        <!-- <h1>Carico le mail... attendere</h1> -->
+        <h1 v-else>Carico le mail... attendere</h1>
     </div>
 
     <!-- vue 3 -->

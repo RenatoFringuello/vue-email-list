@@ -4,7 +4,8 @@ createApp({
     data() {
         return {
             mails:[],
-            nMail: 10
+            nMail: 10,
+            loaded:false
         }
     },
     methods: {
@@ -21,13 +22,14 @@ createApp({
                     console.warn(error);
                 })
                 .then(()=>{
-                    //always
+                    //always; written just to make pratice
                 })
         }
     },
     created() {
         for(let i=0; i<this.nMail; i++)
             this.loadMail();
+        this.loaded = true;
     },
     
 
