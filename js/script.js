@@ -5,7 +5,7 @@ createApp({
         return {
             mails:[],
             nMail: 10,
-            loaded:false
+            countMailLoaded:0
         }
     },
     methods: {
@@ -16,21 +16,28 @@ createApp({
                 .then((response)=>{
                     //if successful
                     this.mails.push(response.data.response);
+                    console.log("mail, pushed",this.countMailLoaded);
                 })
                 .catch((error)=>{
                     //if errors occurs
                     console.warn(error);
                 })
                 .then(()=>{
-                    //always; written just to make pratice
+                    //always after then or catch; written just to make pratice
+                    console.log('mail loaded', this.countMailLoaded);
+                    this.countMailLoaded ++;
+                    if(this.countMailLoaded === 10){
+                        console.log('all loaded');
+                    }
                 })
         }
     },
     created() {
-        for(let i=0; i<this.nMail; i++)
+        for(let i=0; i<this.nMail; i++){
             this.loadMail();
-        this.loaded = true;
-    },
+        }
+        console.log("this log and the next are called after the for loop");
+        console.log("axios (AJAX) it's asynchronous, so the data it's not loaded yet");
+    }
     
-
 }).mount('#app');
