@@ -4,7 +4,7 @@ createApp({
     data() {
         return {
             mails:[],
-            nMail: 10,
+            nMails: 10,
             countMailLoaded:0
         }
     },
@@ -16,7 +16,7 @@ createApp({
                 .then((response)=>{
                     //if successful
                     this.mails.push(response.data.response);
-                    console.log("mail, pushed",this.countMailLoaded);
+                    console.log("mail, loaded and pushed",this.countMailLoaded);
                 })
                 .catch((error)=>{
                     //if errors occurs
@@ -24,16 +24,16 @@ createApp({
                 })
                 .then(()=>{
                     //always after then or catch; written just to make pratice
-                    console.log('mail loaded', this.countMailLoaded);
+                    console.log('after loading and pushing', this.countMailLoaded);
                     this.countMailLoaded ++;
-                    if(this.countMailLoaded === 10){
+                    if(this.countMailLoaded === this.nMails){
                         console.log('all loaded');
                     }
                 })
         }
     },
     created() {
-        for(let i=0; i<this.nMail; i++){
+        for(let i=0; i<this.nMails; i++){
             this.loadMail();
         }
         console.log("this log and the next are called after the for loop");

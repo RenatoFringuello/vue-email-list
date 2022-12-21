@@ -9,7 +9,7 @@
 <body >
 
     <div id="app">
-        <ul v-if="countMailLoaded === 10">
+        <ul v-if="countMailLoaded === nMails">
             <li v-for="mail in mails">{{ mail }}</li>
         </ul>
         <h1 v-else>Carico le mail... attendere</h1>
